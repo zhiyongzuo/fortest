@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".AesEncryptDecryptActivity">
+
+    <!-- 待加密/解密内容输入框 -->
+    <TextView
+        android:id="@+id/tv_input_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="待加密/解密内容："
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/et_input_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="输入明文（加密）或Base64密文（解密）"
+        android:layout_marginTop="8dp"
+        android:minLines="3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_input_hint"/>
+
+    <!-- 密钥Key输入框 -->
+    <TextView
+        android:id="@+id/tv_key_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="密钥Key（16位）："
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_input_content"/>
+
+    <EditText
+        android:id="@+id/et_key"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="AES-128密钥需16个字符"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_key_hint"/>
+
+    <!-- 初始向量IV输入框 -->
+    <TextView
+        android:id="@+id/tv_iv_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="初始向量IV（16位）："
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_key"/>
+
+    <EditText
+        android:id="@+id/et_iv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="CBC模式需16个字符的IV"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_iv_hint"/>
+
+    <!-- 功能按钮 -->
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/et_iv">
+
+        <Button
+            android:id="@+id/btn_encrypt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="AES加密"
+            android:layout_marginEnd="8dp"/>
+
+        <Button
+            android:id="@+id/btn_decrypt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="AES解密"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
+    <!-- 结果展示区域 -->
+    <TextView
+        android:id="@+id/tv_result_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="处理结果："
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"/>
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:minLines="3"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_result_hint"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
